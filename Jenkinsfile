@@ -8,22 +8,27 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh(script: 'mvn -B -DskipTests clean package')
             }
     	}
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh(script:'mvn test')
             }
             post {
                 always {
-                    junit 'target/surefire-reports/*.xml'
+                    junit(testResults: 'target/surefire-reports/*.xml')
                	}
             }
         }
         stage('Deliver') {
+            when {
+              expression {
+                currentBuild.result == null || currentBuild.result == 'SUCCESS'
+              }
+            }
             steps {
-                sh './jenkins/scripts/deliver.sh'
+                sh(script: './jenkins/scripts/deliver.sh')
             }
         }
     }
