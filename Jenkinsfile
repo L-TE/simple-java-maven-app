@@ -37,7 +37,7 @@ pipeline {
     }
     stage('Notify') {
       steps {
-        echo '"${env.NOTIFICATION_MSG}"'
+        echo "${env.NOTIFICATION_MSG}"
       }
     }
   }
