@@ -42,6 +42,6 @@ pipeline {
     }
   }
   environment {
-    NOTIFICATION_MSG = 'END OF PIPELINE.'
+    NOTIFICATION_MSG = '-= END OF PIPELINE =-.'
   }
 }
