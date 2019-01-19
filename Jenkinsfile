@@ -36,7 +36,7 @@ pipeline {
         // Une étape = Un Jenkins plugin
         // Ici on utilise le Jenkins plugin : 'sh' 
         // Etape de creation de l'artefact avec Maven
-        sh 'mvn -B -DskipTests clean package'
+        sh(script: 'mvn -B -DskipTests clean package')
       }
     }
     // Phase de tests
@@ -44,14 +44,14 @@ pipeline {
       // Définition des étapes (steps) de la phase
       steps {
         // Etape de test de l'artefact avec Maven
-        sh 'mvn test'
+        sh(script: 'mvn test')
       }
       // Définition des étapes de fin de phase
       post {
         // Etapes toujours executées (finally)
         always {
           // Etape d'archivage des resultats de tests
-          junit (
+          junit(
             allowEmptyResults: true,
             healthScaleFactor: 5.0,
             testResults: 'target/surefire-reports/*.xml'
@@ -73,7 +73,7 @@ pipeline {
       // Définition des étapes (steps) de la phase
       steps {
         // Etape d'execution de l'artefact (Script Maven et Java)
-        sh './jenkins/scripts/deliver.sh'
+        sh(script: './jenkins/scripts/deliver.sh')
       }
     }
     // Phase de notification
@@ -81,7 +81,7 @@ pipeline {
       // Définition des étapes (steps) de la phase
       steps {
         // Etape d'affichage d'un message sur la sortie 'console'
-        echo "${env.NOTIFICATION_MSG}"
+        echo("${env.NOTIFICATION_MSG}")
       }
     }
   }
