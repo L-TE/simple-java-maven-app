@@ -17,7 +17,7 @@ pipeline {
   // Définition du noeud Jenkins (worker) sur le lequel sera exécuté le pipeline
   //
   agent {
-    // Noeud/machine installé avec 'Docker' 
+    // Noeud/machine installé avec 'Docker'
     // L'execution aura lieu dans le conteneur éphémère
     // basé sur l'image et les paramètres indiqués.
     docker {
@@ -34,7 +34,7 @@ pipeline {
       // Définition des étapes (steps) de la phase
       steps {
         // Une étape = Un Jenkins plugin
-        // Ici on utilise le Jenkins plugin : 'sh' 
+        // Ici on utilise le Jenkins plugin : 'sh'
         // Etape de creation de l'artefact avec Maven
         sh(script: 'mvn -B -DskipTests clean package')
       }
@@ -63,9 +63,9 @@ pipeline {
     stage('Deliver') {
       // Condition d'execution des étapes (steps) de la phase
       when {
-        // Si la phase Jenkins de 'build' 
+        // Si la phase Jenkins de 'build'
         // n'a pas été executée
-        // ou s'est terminée avec succès 
+        // ou s'est terminée avec succès
         expression {
           currentBuild.result == null || currentBuild.result == 'SUCCESS'
         }
