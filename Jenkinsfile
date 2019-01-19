@@ -11,7 +11,7 @@ pipeline {
   // Définition des variables d'environnement associés au pipeline
   //
   environment {
-    NOTIFICATION_MSG = 'END OF PIPELINE.'
+    NOTIFICATION_MSG = '-= END OF PIPELINE =-.'
   }
   //
   // Définition du noeud Jenkins (worker) sur le lequel sera exécuté le pipeline
