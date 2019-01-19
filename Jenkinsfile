@@ -50,12 +50,12 @@ pipeline {
       post {
         // Etapes toujours executées (finally)
         always {
-          // Etape de ????
-          junit {
-            allowEmptyResults true
-            healthScaleFactor 5.0
-            testResults 'target/surefire-reports/*.xml'
-          }
+          // Etape d'archivage des resultats de tests
+          junit (
+            allowEmptyResults: true,
+            healthScaleFactor: 5.0,
+            testResults: 'target/surefire-reports/*.xml'
+          )
         }
       }
     }
