@@ -4,7 +4,7 @@
 // Le fichier contenant le pipeline doit se nommer 'Jenkinsfile' et se trouver
 // dans le répertoire racine du projet concerné.
 // Il sera executé par une tache Jenkins chaque fois que le projet auquel il
-// appartient sera modifié.
+// appartient sera modifié et qu'un un déclencheur (trigger) est configuré.
 // *****************************************************************************
 pipeline {
   //
